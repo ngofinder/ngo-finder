@@ -19,6 +19,7 @@ if os.path.exists(os.path.join(os.path.dirname(os.path.realpath(__file__)),'loca
     from ngo_finder.local_settings import DATABASES
 else:
     import dj_database_url
+    DATABASES = {}
     DATABASES['default'] =  dj_database_url.config()
 
 

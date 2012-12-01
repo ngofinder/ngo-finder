@@ -16,7 +16,7 @@ MANAGERS = ADMINS
 # Parse database configuration from $DATABASE_URL
 if os.path.exists(os.path.join(os.path.dirname(os.path.realpath(__file__)),'local_settings.py')):
     print "yo"
-    import ngo_finder.local_settings
+    from ngo_finder.local_settings import DATABASES
 else:
     import dj_database_url
     DATABASES['default'] =  dj_database_url.config()

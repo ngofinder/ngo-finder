@@ -6,7 +6,7 @@ from django.conf.urls import patterns, include, url
 
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'ngo_finder.views.home', name='home'),
+    url(r'^$', 'ngo_finder.views.hello_world', name='home'),
     # url(r'^ngo_finder/', include('ngo_finder.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
@@ -14,4 +14,7 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     # url(r'^admin/', include(admin.site.urls)),
+
+    url(r'^ngolist', 'ngo_finder.views.ngolist'),
+    url(r'^ngo/(\d+)', 'ngo_finder.views.ngo'),
 )

@@ -2,7 +2,7 @@ import os
 
 # Django settings for ngo_finder project.
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 SITE_ROOT = os.path.join(os.path.dirname(os.path.realpath(__file__)),os.path.pardir)

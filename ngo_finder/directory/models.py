@@ -6,10 +6,6 @@ class Geo_scope(models.Model):
 class Sector(models.Model):
     sector = models.CharField(max_length=255)
 
-class User(models.Model):
-    name = models.CharField(max_length=255)
-    password = models.CharField(max_length=255)
-
 class Organization(models.Model):
     name = models.CharField(max_length=255)
     geo_scope = models.ForeignKey(Geo_scope)

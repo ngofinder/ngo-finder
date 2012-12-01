@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Geo_scope(models.Model):
     scope = models.CharField(max_length=255)

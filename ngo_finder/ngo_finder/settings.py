@@ -1,3 +1,5 @@
+import os
+
 # Django settings for ngo_finder project.
 
 DEBUG = True
@@ -11,6 +13,15 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+# Parse database configuration from $DATABASE_URL
+if os.path.exists(os.path.join(os.path.dirname(os.path.realpath(__file__)),'local_settings.py')):
+    print "yo"
+    import ngo_finder.local_settings
+else:
+    import dj_database_url
+    DATABASES['default'] =  dj_database_url.config()
+
+
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -19,7 +30,7 @@ MANAGERS = ADMINS
 # timezone as the operating system.
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
-TIME_ZONE = 'America/Chicago'
+TIME_ZONE = 'America/New_York'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
@@ -111,7 +122,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Uncomment the next line to enable the admin:
-    # 'django.contrib.admin',
+    'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
@@ -144,11 +155,4 @@ LOGGING = {
         },
     }
 }
-
-# Parse database configuration from $DATABASE_URL
-if os.path.exists(os.path.join(os.path.pardir(os.path(__file__)),'local_settings.py')):
-    import local_settings
-else:
-    import dj_database_url
-    DATABASES['default'] =  dj_database_url.config()
 

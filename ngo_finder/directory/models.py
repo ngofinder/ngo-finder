@@ -10,10 +10,7 @@ class Sector(models.Model):
 class Organization(models.Model):
     name = models.CharField(max_length=255)
     geo_scope = models.ForeignKey(Geo_scope)
-
-class Organization_sector(models.Model):
-    organization = models.ForeignKey(Organization)
-    sector = models.ForeignKey(Sector)
+    sectors = models.ManyToManyField(Sector)
 
 class Organization_location(models.Model):
     organization = models.ForeignKey(Organization)

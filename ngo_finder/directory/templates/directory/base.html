@@ -36,7 +36,11 @@
 {% block head %}{% endblock %}
 </head>
 <body>
-	<a href="/login/">Log In</a>
+	{% if user.is_authenticated %}
+		Hello {{ user.first_name }}!
+	{% else %}
+		<a href="/login/">Log In</a>
+	{% endif %}
 	<!-- Primary Page Layout
 	================================================== -->
 

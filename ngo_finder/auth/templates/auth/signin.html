@@ -1,7 +1,7 @@
 	{{ state }}
 	<form action="/login/" method="post">
 		{% if next %}
-		<input type="hidden" name="next" value="{{ next }}">
+		<input type="hidden" name="next" value="{{ next }}"/>
 		{% endif %}
 		username:
 		<input type="text" name="username" value="{{ username }}" /><br />

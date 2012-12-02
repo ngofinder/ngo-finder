@@ -2,8 +2,8 @@ import os
 
 # Django settings for ngo_finder project.
 
-DEBUG = False
-TEMPLATE_DEBUG = False
+DEBUG = True
+TEMPLATE_DEBUG = DEBUG
 
 SITE_ROOT = os.path.join(os.path.dirname(os.path.realpath(__file__)),os.path.pardir)
 
@@ -137,7 +137,8 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'directory',
     'haystack',
-    'registration'
+    'registration',
+    'auth',
 )
 
 ACCOUNT_ACTIVATION_DAYS = 7 # One-week activation window;

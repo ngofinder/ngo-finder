@@ -22,6 +22,13 @@ class Location(models.Model):
     street = models.CharField(max_length=255,null=True)
     postalcode = models.CharField(max_length=255,null=True)
 
+class Operation(models.Model):
+    organization = models.ForeignKey(Organization)
+    countries = models.TextField(max_length=4096,null=True)
+    states = models.TextField(max_length=4096,null=True)
+    counties = models.TextField(max_length=4096,null=True)
+    cities = models.TextField(max_length=4096,null=True)
+
 class Contact(models.Model):
     organization = models.ForeignKey(Organization)
     name = models.CharField(max_length=255,null=True)

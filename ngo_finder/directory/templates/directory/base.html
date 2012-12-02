@@ -35,7 +35,7 @@
 
 {% block head %}{% endblock %}
 </head>
-<body>
+<body style="background-image:url('{{ STATIC_URL }}images/shepardfairey.jpg');">
 	{% if user.is_authenticated %}
 		Hello {{ user.first_name }}!
 	{% else %}

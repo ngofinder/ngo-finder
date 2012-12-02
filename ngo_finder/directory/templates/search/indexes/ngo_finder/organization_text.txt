@@ -1,5 +1,18 @@
 {{ object.name }}
-{{ object.geo_scope }}
+{% for location in object.location_set %}
+   {{ location.country }}
+   {{ location.state }}
+   {{ location.county }}
+   {{ location.city }}
+   {{ location.street }}
+   {{ location.postalcode }}
+{% endfor %}
 {% for sector in object.sectors %}
 	{{ sector }}
+{% endfor %}
+{% for contact in object.contact_set %}
+   {{ contact.name }}
+   {{ contact.email }}
+   {{ contact.primary_phone }}
+   {{ contact.secondary_phone }}
 {% endfor %}

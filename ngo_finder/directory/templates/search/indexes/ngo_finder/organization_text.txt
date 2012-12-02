@@ -1,0 +1,5 @@
+{{ object.name }}
+{{ object.geo_scope }}
+{% for sector in object.sectors %}
+	{{ sector }}
+{% endfor %}

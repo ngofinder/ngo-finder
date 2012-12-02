@@ -17,4 +17,7 @@ urlpatterns = patterns('',
 
     url(r'^ngolist', 'directory.views.ngolist'),
     url(r'^ngo/(\d+)', 'directory.views.ngo'),
+
+    # search routes
+    (r'^search/', include('haystack.urls')),
 )

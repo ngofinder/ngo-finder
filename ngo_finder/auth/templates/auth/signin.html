@@ -1,5 +1,9 @@
-	{{ state }}
-	<form action="/login/" method="post">
+<html>
+	<head>
+	</head>
+	<body>
+{{ state }}
+	<form action="/login/" method="POST">{% csrf_token %}
 		{% if next %}
 		<input type="hidden" name="next" value="{{ next }}"/>
 		{% endif %}
@@ -10,3 +14,5 @@
 
 		<input type="submit" value="Log In" />
 	</form>
+	</body>
+</html>

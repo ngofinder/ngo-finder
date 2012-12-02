@@ -13,6 +13,8 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+INTERNAL_IPS = ('127.0.0.1',)
+
 # Parse database configuration from $DATABASE_URL
 if os.path.exists(os.path.join(os.path.dirname(os.path.realpath(__file__)),'local_settings.py')):
     print "yo"
@@ -103,6 +105,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
@@ -137,8 +140,9 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'directory',
     'haystack',
-    'registration',
+    #'registration',
     'auth',
+    'debug_toolbar'
 )
 
 ACCOUNT_ACTIVATION_DAYS = 7 # One-week activation window;

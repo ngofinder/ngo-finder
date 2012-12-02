@@ -11,10 +11,12 @@ class Organization(models.Model):
     name = models.CharField(max_length=255)
     geo_scope = models.ForeignKey(Geo_scope,null=True)
     sectors = models.ManyToManyField(Sector)
+    url = models.CharField(max_length=255)
 
 class Location(models.Model):
     organization = models.ForeignKey(Organization)
     primary = models.BooleanField(default=False) # record is org's main location
+    url = models.CharField(max_length=255)
     country = models.CharField(max_length=255,null=True)
     state = models.CharField(max_length=255,null=True)
     county = models.CharField(max_length=255,null=True)

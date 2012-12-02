@@ -2,8 +2,8 @@
 {% block content %}
 
 <div id="profile_content">
-<div><span style='font-weight:bold' for="name">name:</span> <span>{{ organization.name }}</span></div>
-<div><span style='font-weight:bold'>geo scope:</span><span>{{ organization.geo_scope.scope }}</span></div><br />
+<h1>{{ organization.name }}</h1>
+<!--<div><span style='font-weight:bold'>geo scope:</span><span>{{ organization.geo_scope.scope }}</span></div><br />-->
 
 <h3>Location(s)</h3>
 {% for location in organization.location_set.all %}

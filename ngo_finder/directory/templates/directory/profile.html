@@ -1,54 +1,64 @@
 {% block content %}
 
 <div id="profile_content">
-<div<<span for="name">name:</span><span>{{ organization.name }}</span></div>
-<div><span>geo scope:</span><span>{{ organization.geo_scope.scope }}</span></div>
+<div><span style='font-weight:bold' for="name">name:</span> <span>{{ organization.name }}</span></div>
+<div><span style='font-weight:bold'>geo scope:</span><span>{{ organization.geo_scope.scope }}</span></div><br />
+
+<h3>Location(s)</h3>
 {% for location in organization.location_set.all %}
-<span>Location:</span>
+<span style='font-weight:bold'>Location:</span>
 <div class="location">
-{{ location.country }}
-{{ location.state }}
-{{ location.county }}
-{{ location.city }}
-{{ location.street }}
-{{ location.postalcode }}
-</div>
+<span style="font-weight:bold">country:</span>{{ location.country }}<br />
+<span style="font-weight:bold">state:</span>{{ location.state }}<br />
+<span style="font-weight:bold">county:</span>{{ location.county }}<br />
+<span style="font-weight:bold">city:</span>{{ location.city }}<br />
+<span style="font-weight:bold">street:</span>{{ location.street }}<br />
+<span style="font-weight:bold">postalcode:</span>{{ location.postalcode }}<br />
+</div><br />
 {% endfor %}
 {% for sector in organization.sector_set.all %}
 <div class="sector">
-{{ sector.sector }}
-</div>
+<span style="font-weight:bold">sector:</span>{{ sector.sector }}
+</div><br />
 
 {% endfor %}
 
+<h3>Contact(s)</h3>
 {% for contact in organization.contact_set.all %}
+<span style='font-weight:bold'>Contact:</span>
 <div class="contact">
-{{ contact.name }}
-{{ contact.email }}
-{{ contact.primary_phone }}
-{{ contact.secondary_phone }}
+<span style="font-weight:bold">name:</span>{{ contact.name }}<br />
+<span style="font-weight:bold">email:</span>{{ contact.email }}<br />
+<span style="font-weight:bold">primary:</span>{{ contact.primary_phone }}<br />
+<span style="font-weight:bold">secondary:</span>{{ contact.secondary_phone }}<br />
 </div>
+<br />
 {% endfor %}
 
+<h3>Note(s)</h3>
 {% for comment in organization.comment_set.all %}
+<span style='font-weight:bold'>Note:</span>
 <div class="comment">
-{{ comment.user.first_name }}
-{{ comment.user.last_name }}
-{{ comment.subject }}
-{{ comment.text }}
-{{ comment.created_at }}
-{{ comment.updated_at }}
+<span style="font-weight:bold">First Name:</span>{{ comment.user.first_name }}<br />
+<span style="font-weight:bold">Last Name:</span>{{ comment.user.last_name }}<br />
+<span style="font-weight:bold">subject:</span>{{ comment.subject }}<br />
+<span style="font-weight:bold">text:</span>{{ comment.text }}<br />
+<span style="font-weight:bold">created:</span>{{ comment.created_at }}<br />
+<span style="font-weight:bold">updated:</span>{{ comment.updated_at }}<br />
 </div>
+<br />
 
 {% endfor %}
 </div>
 {% endblock %}
-
+<h3>Add a Note</h3>
+<div>
 <form action="" method="post" />
 {% csrf_token %}
-<label for="subject">Subject:</label>
-<input type="text" name="subject" />
-<label for="comment">Comment:</label>
-<input type="textarea" name="comment" />
+<label for="subject" style="font-weight:bold">Subject:</label>
+<input type="text" name="subject" /><br />
+<label for="comment" style="font-weight:bold">Notes:</label><br />
+<textarea rows="10" cols="40" name="comment"></textarea><br />
 <input type='submit' name='submit' value="Submit Comment"/>
 </form>
+</div>

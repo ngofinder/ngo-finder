@@ -10,8 +10,7 @@ def hello_world(request):
     return render_to_response("directory/hello_world.html",c)
 
 def ngo(request, ngo_id):
-        return render_to_response("directory/hello_world.html",c)
-        organization = Organization.objects.filter(id = ngo_id)
+        organization = Organization.objects.filter(id = ngo_id).get()
         c = RequestContext(request,{"organization" : organization})
         c.update(csrf(request))
         return render_to_response("directory/profile.html", c)

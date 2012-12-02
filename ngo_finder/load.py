@@ -5,18 +5,12 @@ from directory.models import *
 def create_geo_scope():
     cnt = Geo_scope.objects.count()
     if cnt == 0:
-        gs = Geo_scope(id=1,scope='global')
-        gs.save()
-        gs = Geo_scope(id=2,scope='country')
-        gs.save()
-        gs = Geo_scope(id=3,scope='state/province')
-        gs.save()
-        gs = Geo_scope(id=4,scope='county/district')
-        gs.save()
-        gs = Geo_scope(id=5,scope='city/town')
-        gs.save()
-        gs = Geo_scope(id=6,scope='postalcode')
-        gs.save()
+        gs = Geo_scope(id=1,scope='global').save()
+        gs = Geo_scope(id=2,scope='country').save()
+        gs = Geo_scope(id=3,scope='state/province').save()
+        gs = Geo_scope(id=4,scope='county/district').save()
+        gs = Geo_scope(id=5,scope='city/town').save()
+        gs = Geo_scope(id=6,scope='postalcode').save()
 
 def insert(csvrow):
 
@@ -125,34 +119,4 @@ for row in reader:
 ifile.close()
 
 sys.exit()
-
-
-
-#############################################################
-# create object and populate its fields
-org = Organization()
-org.name = 'my org name 2'
-
-#############################################################
-# or create the obj with its fields
-#org = Organization(name='')
-
-#############################################################
-# save the object
-org.save()
-
-#############################################################
-# add sectors
-org.sectors.add(Sector.objects.get_or_create(sector='health')[0])
-
-#############################################################
-# create and populate the location object
-loc = Location()
-loc.street = '3401 market'
-
-#############################################################
-# save the location data
-loc.organization = org
-loc.save()
-
 

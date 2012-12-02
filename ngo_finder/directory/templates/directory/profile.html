@@ -32,7 +32,8 @@
 
 {% for comment in organization.comment_set.all %}
 <div class="comment">
-{{ comment.user }}
+{{ comment.user.first_name }}
+{{ comment.user.last_name }}
 {{ comment.subject }}
 {{ comment.text }}
 {{ comment.created_at }}
@@ -42,3 +43,12 @@
 {% endfor %}
 </div>
 {% endblock %}
+
+<form action="" method="post" />
+{% csrf_token %}
+<label for="subject">Subject:</label>
+<input type="text" name="subject" />
+<label for="comment">Comment:</label>
+<input type="textarea" name="comment" />
+<input type='submit' name='submit' value="Submit Comment"/>
+</form>

@@ -4,15 +4,16 @@
 	<body>
 {{ state }}
 	<form action="/login/" method="POST">{% csrf_token %}
-		{% if next %}
-		<input type="hidden" name="next" value="{{ next }}"/>
-		{% endif %}
+		{% if signed_in %}
+		<input type="hidden" name="signed_in" value="{{ signed_in }}"/>
+		<input type="submit" value="ok">
+		{% else %}
 		username:
 		<input type="text" name="username" value="{{ username }}" /><br />
 		password:
 		<input type="password" name="password" value="" /><br />
-
 		<input type="submit" value="Log In" />
+		{% endif %}
 	</form>
 	</body>
 </html>

@@ -24,10 +24,10 @@ class Location(models.Model):
 
 class Operation(models.Model):
     organization = models.ForeignKey(Organization)
-    countries = models.TextField(max_length=4096,null=True)
-    states = models.TextField(max_length=4096,null=True)
-    counties = models.TextField(max_length=4096,null=True)
-    cities = models.TextField(max_length=4096,null=True)
+    countries = models.TextField(null=True)
+    states = models.TextField(null=True)
+    counties = models.TextField(null=True)
+    cities = models.TextField(null=True)
 
 class Contact(models.Model):
     organization = models.ForeignKey(Organization)

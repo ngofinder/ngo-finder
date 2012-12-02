@@ -1,7 +1,7 @@
 {% extends 'directory/base.html' %}
 {% block content %}
 
-<div id="profile_content">
+<div id="profile_content" style="margin-left: 20px">
 <h1>{{ organization.name }}</h1>
 <!--<div><span style='font-weight:bold'>geo scope:</span><span>{{ organization.geo_scope.scope }}</span></div><br />-->
 
@@ -50,8 +50,6 @@
 <br />
 
 {% endfor %}
-</div>
-{% endblock %}
 <h3>Add a Note</h3>
 <div>
 <form action="" method="post" />
@@ -59,7 +57,9 @@
 <label for="subject" style="font-weight:bold">Subject:</label>
 <input type="text" name="subject" /><br />
 <label for="comment" style="font-weight:bold">Notes:</label><br />
-<textarea rows="10" cols="40" name="comment"></textarea><br />
+<textarea rows="10" cols="50" name="comment"></textarea><br />
 <input type='submit' name='submit' value="Submit Comment"/>
 </form>
 </div>
+</div>
+{% endblock %}

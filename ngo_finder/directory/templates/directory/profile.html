@@ -1,0 +1,45 @@
+{% block content %}
+
+<div id="profile_content">
+<span for="name">name:</span><span>{{ organization.name }}</span>
+<span>geo scope:</span><span>{{organization.geo_scope.scope}}></span>
+{% for location in organization.location_set %}
+<span>Location:</span>
+<div class="location">
+{{ location.country }}
+{{ location.state }}
+{{ location.county }}
+{{ location.city }}
+{{ location.street }}
+{{ location.postalcode }}
+</div>
+{% endfor %}
+{% for sector in organization.sector_set %}
+<div class="sector">
+{{ sector.sector }}
+</div>
+
+{% endfor %}
+
+{% for contact in organization.contact_set %}
+<div class="contact">
+{{ contact.name }}
+{{ contact.email }}
+{{ contact.primary_phone }}
+{{ contact.secondary_phone }}
+</div>
+{% endfor %}
+
+{% for comment in organization.comment_set %}
+<div class="comment">
+{{ comment.user }}
+{{ comment.subject }}
+{{ comment.text }}
+{{ comment.created_at }}
+{{ comment.updated_at }}
+</div>
+
+{% endfor %}
+</div>
+
+{% endblock %}

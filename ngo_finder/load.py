@@ -2,6 +2,22 @@ import csv
 import sys
 from directory.models import *
 
+def create_geo_scope():
+    cnt = Geo_scope.objects.count()
+    if cnt == 0:
+        gs = Geo_scope(id=1,scope='global')
+        gs.save()
+        gs = Geo_scope(id=2,scope='country')
+        gs.save()
+        gs = Geo_scope(id=3,scope='state/province')
+        gs.save()
+        gs = Geo_scope(id=4,scope='county/district')
+        gs.save()
+        gs = Geo_scope(id=5,scope='city/town')
+        gs.save()
+        gs = Geo_scope(id=6,scope='postalcode')
+        gs.save()
+
 def insert(csvrow):
 
     #############################################################
@@ -91,6 +107,7 @@ def insert(csvrow):
         loc.save()
 
 
+create_geo_scope()
 #ifile  = open("ZambiaNGOdatabase12022012.csv", "rb")
 ifile  = open(sys.argv[1], "rb")
 reader = csv.reader(ifile)

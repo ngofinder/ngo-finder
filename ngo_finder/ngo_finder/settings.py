@@ -16,11 +16,16 @@ MANAGERS = ADMINS
 # Parse database configuration from $DATABASE_URL
 if os.path.exists(os.path.join(os.path.dirname(os.path.realpath(__file__)),'local_settings.py')):
     print "yo"
-    from ngo_finder.local_settings import DATABASES
+    from ngo_finder.local_settings import *
 else:
     import dj_database_url
     DATABASES = {}
     DATABASES['default'] =  dj_database_url.config()
+    EMAIL_HOST = os.environ['EMAIL_HOST']
+    EMAIL_PORT = os.environ['EMAIL_PORT']
+    EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER']
+    EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
+    EMAIL_USE_TLS = True
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -118,6 +123,7 @@ HAYSTACK_SITECONF = 'ngo_finder.search_sites'
 HAYSTACK_SEARCH_ENGINE = 'whoosh'
 HAYSTACK_WHOOSH_PATH = os.path.join(os.path.dirname(__file__), 'whoosh_index')
 
+
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -131,8 +137,10 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'directory',
     'haystack',
+    'registration'
 )
 
+ACCOUNT_ACTIVATION_DAYS = 7 # One-week activation window;
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

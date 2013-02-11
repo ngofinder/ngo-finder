@@ -4,10 +4,10 @@ from directory.models import Organization, Comment
 from django.core.context_processors import csrf
 from django.template import RequestContext
 
-def hello_world(request):
+def main(request):
     c = RequestContext(request,{})
     c.update(csrf(request))
-    return render_to_response("directory/hello_world.html",c)
+    return render_to_response("directory/main.html",c)
 
 def ngo(request, ngo_id):
     organization = Organization.objects.filter(id = ngo_id).get()    

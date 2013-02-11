@@ -23,3 +23,13 @@ def ngo(request, ngo_id):
     c.update(csrf(request))
     return render_to_response("directory/profile.html", c)
     
+def about(request):
+    c = RequestContext(request,{})
+    c.update(csrf(request))
+    return render_to_response("directory/about.html",c)
+
+def contact(request):
+    c = RequestContext(request,{})
+    c.update(csrf(request))
+    return render_to_response("directory/contact.html",c)
+

@@ -6,28 +6,28 @@
 <h3 class="span12">Location(s)</h3>
 {% for location in organization.location_set.all %}
     <dl class="itemList">
-      <dt class="span2">country:</dt>       <dd class="span10">{{ location.country    }}</dd>
-      <dt class="span2">state:</dt>         <dd class="span10">{{ location.state      }}</dd>
-      <dt class="span2">county:</dt>        <dd class="span10">{{ location.county     }}</dd>
-      <dt class="span2">city:</dt>          <dd class="span10">{{ location.city       }}</dd>
-      <dt class="span2">street:</dt>        <dd class="span10">{{ location.street     }}</dd>
-      <dt class="span2">postalcode:</dt>    <dd class="span10">{{ location.postalcode }}</dd>
+      <dt class="span2">country:</dt>       <dd class="span10">{{ location.country|default_if_none:"n/a"   }}</dd>
+      <dt class="span2">state:</dt>         <dd class="span10">{{ location.state|default_if_none:"n/a"     }}</dd>
+      <dt class="span2">county:</dt>        <dd class="span10">{{ location.county|default_if_none:"n/a"    }}</dd>
+      <dt class="span2">city:</dt>          <dd class="span10">{{ location.city|default_if_none:"n/a"      }}</dd>
+      <dt class="span2">street:</dt>        <dd class="span10">{{ location.street|default_if_none:"n/a"    }}</dd>
+      <dt class="span2">postalcode:</dt>    <dd class="span10">{{ location.postalcode|default_if_none:"n/a"}}</dd>
     </dl>
   {% endfor %}
   <h3 class="span12">Sectors:</h3>
   <dl>
     {% for sector in organization.sector_set.all %}
-    <dt class="span2">Sector:</dt>    <dd class="span8">{{ sector.sector }}</dd>
+    <dt class="span2">Sector:</dt>    <dd class="span10">{{ sector.sector }}</dd>
     {% endfor %}
   </dl>
 
 <h3 class="span12">Contact(s)</h3>
 {% for contact in organization.contact_set.all %}
   <dl class="itemList">
-    <dt class="span2">name:</dt>          <dd class="span10">{{ contact.name }}</dd>
-    <dt class="span2">email:</dt>         <dd class="span10">{{ contact.email }}</dd>
-    <dt class="span2">primary:</dt>       <dd class="span10">{{ contact.primary_phone }}</dd>
-    <dt class="span2">secondary:</dt>     <dd class="span10">{{ contact.secondary_phone }}</dd>
+    <dt class="span2">name:</dt>          <dd class="span10">{{ contact.name|default_if_none:"n/a"             }}</dd>
+    <dt class="span2">email:</dt>         <dd class="span10">{{ contact.email|default_if_none:"n/a"            }}</dd>
+    <dt class="span2">primary:</dt>       <dd class="span10">{{ contact.primary_phone|default_if_none:"n/a"    }}</dd>
+    <dt class="span2">secondary:</dt>     <dd class="span10">{{ contact.secondary_phone|default_if_none:"n/a"  }}</dd>
   </dl>
 {% endfor %}
 {% if user.is_staff %}

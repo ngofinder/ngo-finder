@@ -52,8 +52,9 @@
 	<form action="/login/" method="POST" class="form-signin">
 	{% csrf_token %}
 		{% if signed_in %}
+		<h2 class="form-signin-heading">Sup!</h2>
 		<input type="hidden" name="signed_in" value="{{ signed_in }}"/>
-		<input type="submit" value="ok">
+		<input type="submit" value="Back to main page">
 		{% else %}
         <h2 class="form-signin-heading">Please sign in</h2>
         <input type="text" name="username" class="input-block-level" placeholder="Username" value="{{ username }}">

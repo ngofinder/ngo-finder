@@ -1,42 +1,37 @@
 {% extends 'directory/base.html' %}
 {% block content %}
 
-<div id="profile_content" style="margin-left: 20px">
 <h1>{{ organization.name }}</h1>
-<!--<div><span style='font-weight:bold'>geo scope:</span><span>{{ organization.geo_scope.scope }}</span></div><br />-->
 
-<h3>Location(s)</h3>
+<h3 class="span12">Location(s)</h3>
 {% for location in organization.location_set.all %}
-<span style='font-weight:bold'>Location:</span>
-<div class="location">
-<span style="font-weight:bold">country:</span>{{ location.country }}<br />
-<span style="font-weight:bold">state:</span>{{ location.state }}<br />
-<span style="font-weight:bold">county:</span>{{ location.county }}<br />
-<span style="font-weight:bold">city:</span>{{ location.city }}<br />
-<span style="font-weight:bold">street:</span>{{ location.street }}<br />
-<span style="font-weight:bold">postalcode:</span>{{ location.postalcode }}<br />
-</div><br />
-{% endfor %}
-{% for sector in organization.sector_set.all %}
-<div class="sector">
-<span style="font-weight:bold">sector:</span>{{ sector.sector }}
-</div><br />
+    <dl class="itemList">
+      <dt class="span2">country:</dt>       <dd class="span10">{{ location.country    }}</dd>
+      <dt class="span2">state:</dt>         <dd class="span10">{{ location.state      }}</dd>
+      <dt class="span2">county:</dt>        <dd class="span10">{{ location.county     }}</dd>
+      <dt class="span2">city:</dt>          <dd class="span10">{{ location.city       }}</dd>
+      <dt class="span2">street:</dt>        <dd class="span10">{{ location.street     }}</dd>
+      <dt class="span2">postalcode:</dt>    <dd class="span10">{{ location.postalcode }}</dd>
+    </dl>
+  {% endfor %}
+  <h3 class="span12">Sectors:</h3>
+  <dl>
+    {% for sector in organization.sector_set.all %}
+    <dt class="span2">Sector:</dt>    <dd class="span8">{{ sector.sector }}</dd>
+    {% endfor %}
+  </dl>
 
-{% endfor %}
-
-<h3>Contact(s)</h3>
+<h3 class="span12">Contact(s)</h3>
 {% for contact in organization.contact_set.all %}
-<span style='font-weight:bold'>Contact:</span>
-<div class="contact">
-<span style="font-weight:bold">name:</span>{{ contact.name }}<br />
-<span style="font-weight:bold">email:</span>{{ contact.email }}<br />
-<span style="font-weight:bold">primary:</span>{{ contact.primary_phone }}<br />
-<span style="font-weight:bold">secondary:</span>{{ contact.secondary_phone }}<br />
-</div>
-<br />
+  <dl class="itemList">
+    <dt class="span2">name:</dt>          <dd class="span10">{{ contact.name }}</dd>
+    <dt class="span2">email:</dt>         <dd class="span10">{{ contact.email }}</dd>
+    <dt class="span2">primary:</dt>       <dd class="span10">{{ contact.primary_phone }}</dd>
+    <dt class="span2">secondary:</dt>     <dd class="span10">{{ contact.secondary_phone }}</dd>
+  </dl>
 {% endfor %}
-
-<h3>Note(s)</h3>
+{% if user.is_staff %}
+<h3 class="span12">Note(s)</h3>
 {% for comment in organization.comment_set.all %}
 <span style='font-weight:bold'>Note:</span>
 <div class="comment">
@@ -52,14 +47,14 @@
 {% endfor %}
 <h3>Add a Note</h3>
 <div>
-<form action="" method="post" />
+  <form action="" method="post" />
 {% csrf_token %}
-<label for="subject" style="font-weight:bold">Subject:</label>
-<input type="text" name="subject" /><br />
-<label for="comment" style="font-weight:bold">Notes:</label><br />
-<textarea rows="10" cols="50" name="comment"></textarea><br />
-<input type='submit' name='submit' value="Submit Comment"/>
-</form>
+    <label for="subject" style="font-weight:bold">Subject:</label>
+    <input type="text" name="subject" /><br />
+    <label for="comment" style="font-weight:bold">Notes:</label><br />
+    <textarea rows="10" cols="50" name="comment"></textarea><br />
+    <input type='submit' name='submit' value="Submit Comment"/>
+  </form>
 </div>
-</div>
+{% endif %}
 {% endblock %}
